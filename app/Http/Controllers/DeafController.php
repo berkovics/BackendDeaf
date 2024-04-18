@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class DeafController extends Controller
 {
-    public function index()
+    public function getDeafs()
     {
-        return Deaf::get();
+        return Deaf::all();
     }
 
-    public function store(Request $request)
+    public function addDeaf(Request $request)
     {
         $request->validate([
             'name' => 'required',

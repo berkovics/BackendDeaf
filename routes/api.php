@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("getDeafs", [DeafController::class, "index"]);
-Route::post("addDeaf", [DeafController::class, "store"]);
+Route::get("getDeafs", [DeafController::class, "getDeafs"]);
+Route::post("addDeaf", [DeafController::class, "addDeaf"]);
 Route::put("updateDeaf", [DeafController::class, "update"]);
 Route::delete("deleteDeaf", [DeafController::class, "destroy"]);
