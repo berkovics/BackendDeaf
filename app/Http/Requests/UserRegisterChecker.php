@@ -29,15 +29,8 @@ class UserRegisterChecker extends FormRequest
         return [
             "name" => ["required", "unique:users", "max:50"],
             "email" => ["required", "regex:/(.+)@(.+)\.(.+)/i", "unique:users"],
-            "password" => ["required", Password::min(3)
-                ->letters()
-                ->numbers()
-                ->mixedCase()
-                ->symbols(),
-                //->uncompromised(),
-                "confirmed"
-            ],
-            "password_confirmation" => "required"
+            "password" => ["required", "confirmed"],
+            "password_confirmation" => ["required", "same:password"]
         ];
     }
 
@@ -49,13 +42,8 @@ class UserRegisterChecker extends FormRequest
             "email.regex" => "Nem valós email cím",
             "email.unique" => "Már létező email cím",
             "password.required" => "Kérem írja be a Jelszó",
-            "password.min" => "Túl rövid jelszó",
-            "password.letters" => "Legalább egy betű",
-            "password.numbers" => "Legalább egy szám",
-            "password.mixed" => "Kis és nagybetű",
-            "password.symbols" => "Legalább egy különleges karakter",
-            "password.confirmation.required" => "Kérem írja be a Jelszó megerősítés",
-            "password.confirmed" => "Nem egyező jelszó"
+            "password_confirmation.required" => "Kérem írja be a Jelszó megerősítés",
+            "password_confirmation.same" => "A két jelszó nem egyezik!"
         ];
     }
 
